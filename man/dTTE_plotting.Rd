@@ -51,9 +51,6 @@ plotCovariateBalanceOfTopVariables(
 )
 }
 \arguments{
-\item{unfilteredData}{A logical indicating whether to include unfiltered data in the plot.}
-\item{maxNameWidth}{An integer specifying the maximum width for variable names.}
-
 \item{m.out}{The output from `MatchIt`, containing matched data.}
 
 \item{data}{A dataset containing treatment and propensity scores.}
@@ -93,7 +90,11 @@ plotCovariateBalanceOfTopVariables(
 \item{beforeLabel}{Label for pre-matching imbalance.}
 
 \item{afterLabel}{Label for post-matching balance.}
+
+\item{unfilteredData}{A logical indicating whether to include unfiltered data in the plot.}
+\item{maxNameWidth}{An integer specifying the maximum width for variable names.}
 }
+
 \value{
 A `ggplot2` object showing balance improvement after matching.
 }

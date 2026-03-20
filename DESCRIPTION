@@ -1,9 +1,10 @@
 Package: debiasedTrialEmulation
 Type: Package
 Title: Pipeline for Debiased Target Trial Emulation
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: c(person("Bingyu", "Zhang", role = c("aut","cre"), email = "bingyuz7@sas.upenn.edu"),
             person("Yiwen", "Lu", role = "aut"),
+            person("Huilin", "Tang", role = "aut"),
             person("Dazheng","Zhang", role = "aut"),
             person("Yuqing", "Lei", role = "aut"),
             person("Tingyin", "Wang", role = "aut"),
@@ -20,12 +21,13 @@ RoxygenNote: 7.3.2
 NeedsCompilation: no
 Author: Bingyu Zhang [aut, cre],
   Yiwen Lu [aut],
+  Huilin Tang [aut],
   Dazheng Zhang [aut],
   Yuqing Lei [aut],
   Tingyin Wang [aut],
   Siqi Chen [aut],
   Yong Chen [aut]
 Maintainer: Bingyu Zhang <bingyuz7@sas.upenn.edu>
-Packaged: 2025-05-20 16:36:38 UTC; yiwenlu
+Packaged: 2026-03-20 00:11:18 UTC; yiwenlu
 Repository: CRAN
-Date/Publication: 2025-05-23 18:22:05 UTC
+Date/Publication: 2026-03-20 00:30:03 UTC

@@ -96,6 +96,7 @@ computePreferenceScore <- function(data, unfilteredData = NULL) {
 #' @param stratificationColumns Additional columns to use for stratification.
 #' @param baseSelection Defines which group is used to determine strata cutoffs ("all", "target", or "comparator").
 #' @return A data frame with stratum assignments.
+#' @importFrom purrr map set_names
 #' @export
 stratifyByPs <- function(population, numberOfStrata = 5, stratificationColumns = c(), baseSelection = "all") {
   if (!("rowId" %in% colnames(population)))

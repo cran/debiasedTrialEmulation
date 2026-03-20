@@ -29,9 +29,9 @@ library("dplyr")
 data(demo_data)
 # First run TTE pipeline
 xvars <- c("eth_cat", "age_cat", "sex", "cohort_entry_month",
-            "obese", "pmca_index", "n_ed", "n_inpatient",
-           "n_tests", "imm_date_diff_grp", "medical_1", "medical_2",
-           "medical_3", "medical_4", "medical_5")
+           "obese", "pmca_index", "n_ed", "n_inpatient",
+           "n_tests", "imm_date_diff_grp", "medical_1",
+           "medical_2", "medical_3", "medical_4", "medical_5")
 yvars1 <- colnames(demo_data \%>\% select(starts_with("visits_")))
 ncovars1 <- colnames(demo_data \%>\% select(starts_with("nco_visits_")))
 tte_result <- TTE_pipeline(demo_data, xvars=xvars, yvars=yvars1, ncovars=ncovars1,

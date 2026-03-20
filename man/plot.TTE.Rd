@@ -18,6 +18,3 @@ Options are "SMD" (Standardized Mean Differences) and
 \description{
 Plots diagnostic graphs for the TTE pipeline output.
 }
-\value{
-  No return value, printed to the console.
-}

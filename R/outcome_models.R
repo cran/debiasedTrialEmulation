@@ -8,9 +8,10 @@
 get_OR_matching <- function(data, names_outcome){
   data_lm=data.frame(
     outcome = data[,names_outcome],
-    treatment = data$treatment
+    treatment = data$treatment,
+    weights = data$weights
   )
-  s = summary(glm(outcome~treatment,data=data_lm,family = binomial(link = "logit")))
+  s = summary(glm(outcome~treatment,data=data_lm,family = binomial(link = "logit"), weights = weights))
   rslt = s$coefficients[2,c(1,2,4)]
 
   return(data.frame(names_outcome = names_outcome, logEst = rslt[1], seLogEst = rslt[2], p = rslt[3]))
@@ -23,26 +24,27 @@ get_OR_matching <- function(data, names_outcome){
 get_RR_matching <- function(data, names_outcome){
   data_lm=data.frame(
     outcome = data[,names_outcome],
-    treatment = data$treatment
+    treatment = data$treatment,
+    weights = data$weights
   )
-  
+
   # Check if outcome is all zeros or all ones
   if (all(data_lm$outcome == 0) || all(data_lm$outcome == 1)) {
     warning(paste("Outcome", names_outcome, "is constant (all", ifelse(all(data_lm$outcome == 0), "zeros", "ones"), "). Cannot estimate risk ratio."))
     return(data.frame(names_outcome = names_outcome, logEst = NA, seLogEst = NA, p = NA))
   }
-  
+
   # Try to fit the model
   tryCatch({
-    s = summary(glm(outcome~treatment, data=data_lm, family = poisson(link = "log")))
+    s = summary(glm(outcome~treatment, data=data_lm, family = poisson(link = "log"), weights = weights))
     rslt = s$coefficients[2,c(1,2,4)]
-    
+
     # Check if results are valid
     if (any(is.na(rslt))) {
       warning(paste("Model for outcome", names_outcome, "did not converge. Returning NA values."))
       return(data.frame(names_outcome = names_outcome, logEst = NA, seLogEst = NA, p = NA))
     }
-    
+
     return(data.frame(names_outcome = names_outcome, logEst = rslt[1], seLogEst = rslt[2], p = rslt[3]))
   }, error = function(e) {
     warning(paste("Error fitting model for outcome", names_outcome, ":", e$message))
@@ -59,11 +61,13 @@ get_HR_matching <- function(data, names_outcome){
   data_lm=data.frame(
     outcome = data[,names_outcome],
     treatment = data$treatment,
-    time = data[,names_time]
+    time = data[,names_time],
+    weights = data$weights
   )
 
   cox_fit <- coxph(Surv(time, outcome) ~ treatment,
-                   data = data_lm)
+                   data = data_lm,
+                   weights = weights)
 
   logEst <- coef(cox_fit)
   seLogEst <- sqrt(diag(vcov(cox_fit)))

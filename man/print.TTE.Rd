@@ -14,6 +14,3 @@
 \description{
 Prints a concise summary of the TTE pipeline output.
 }
-\value{
-  No return value, printed to the console.
-}

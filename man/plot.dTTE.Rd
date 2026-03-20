@@ -14,6 +14,3 @@
 \description{
 Plots only the calibration graph for the dTTE pipeline output.
 }
-\value{
-  No return value, printed to the console.
-}

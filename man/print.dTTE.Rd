@@ -14,6 +14,3 @@
 \description{
 Prints a concise summary of the dTTE pipeline output.
 }
-\value{
-  No return value, printed to the console.
-}
